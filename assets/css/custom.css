@@ -1,0 +1,55 @@
+	.price-table-footer {
+		padding: 30px;
+	}
+ .bottom-con {
+	    padding-bottom: 20px;
+    }
+    
+    .bottom-con h5 {
+        text-align: center;
+    }
+    
+    .bottom-con p {
+        padding-left: 30%;
+	    text-align: left;
+    }
+    
+    .newsletter {
+	    margin-top: 15px;
+	    padding: 0px 50px 0px 50px;
+	    text-align: center;
+    }
+    
+    /* GOING UP ARROW */
+
+    .up{
+	    width: 100px;
+	    height: 100px;
+	    border-radius: 50%;
+	    position: absolute;
+	    top: -85px;
+	    left: 50%;
+	    margin-left: -50px;
+	    -webkit-transition:  ease-out 0.5s;
+        -moz-transition: ease-out 0.5s;
+        -o-transition: ease-out 0.5s;
+        transition: ease-out 0.5s;
+        z-index: 1000;
+	}
+	
+	.up:hover{
+		top: -50px;
+		-webkit-transition: all 0.5s linear;
+        -moz-transition: all 0.5s linear;
+        -o-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+        transition: all 0.5s linear;
+        z-index: 1000;
+	}
+	
+	.up span {
+	    font-size: 40px; 
+	    margin-top: 45px;
+	    margin-left: 32px;
+	}
+	

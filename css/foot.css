@@ -1,0 +1,44 @@
+/* 10. Footer
+-------------- */
+    
+    #foot {
+	    background:#60504b;
+	    opacity: 0.7;
+	    padding: 10px 0px ;
+	    display: block;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+	    z-index: 900;
+	    -webkit-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.9);
+	    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.9);
+    }
+    
+    .bottom-con h5 {
+	    color: #fff;
+    }
+    
+    .bottom-con p {
+        padding-left: 30%;
+	    text-align: left;
+	    color: #fff;
+    }
+    
+    .footer a:hover {
+	    color: #e67e22;
+    }
+    
+    /* GOING UP ARROW */
+    
+    .up {
+	    background: #000;
+    }
+    
+    .up span:hover {
+		color: #e67e22 ;
+	}
+	
+	.up span {
+	    color: #c1c1c1;
+	}
+	

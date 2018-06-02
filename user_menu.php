@@ -1,12 +1,16 @@
 <?php
+
+session_start();
 	$host="localhost:3306";
 $user="root";
 $password="";
 //dynamic changes
 
+$team_id=$_GET['id'];
 
-$team_name="team_1";
-$marks="10";
+$team_name="team_".$team_id;
+
+$marks="40";
 
 $con=mysqli_connect($host,$user,$password);
 mysqli_select_db($con,"round_intermediate");
@@ -14,7 +18,8 @@ $temp="select * from variables limit 1";
 $temp1=mysqli_fetch_assoc(mysqli_query($con,$temp));
 $id=$temp1["id"]-1;
 $round=$temp1["round"];
-$db=$temp1["round"];
+$db=substr($temp1["round"],4,7);
+
 mysqli_select_db($con,$db);
 
 // Check connection
@@ -25,7 +30,7 @@ if (mysqli_connect_errno())
   }
   
 mysqli_select_db($con,"questions");
-$query="select correct_answer from ".$round." where id='".$id."' "; //fetching correct answer
+$query="select correct_answer from `".$round."` where id='".$id."' "; //fetching correct answer
 $ans=mysqli_fetch_assoc(mysqli_query($con,$query));
 //echo $ans["correct_answer"];
 mysqli_select_db($con,$db);
@@ -39,15 +44,16 @@ if(isset($_POST['select_btn'])){
     
     if($select_btn==$ans["correct_answer"]) //comparing answer
     {
-    $sql="insert into ".$team_name."  (`question_id`, `provided_answer`, `marks`) VALUES ('".$id."', '".$select_btn."', '".$marks."');";
+    $sql="insert into ".$team_name."  (`question_id`,`round`, `provided_answer`, `marks`) VALUES ('".$id."','".$round."', '".$select_btn."', '".$marks."')";
+    echo $sql;
     mysqli_query($con,$sql);
 	}
 
 	else{
-	$sql="insert into ".$team_name."  (`question_id`, `provided_answer`, `marks`) VALUES ('".$id."', '".$select_btn."', '0');";
+	$sql="insert into ".$team_name."  (`question_id`,`round`, `provided_answer`, `marks`) VALUES ('".$id."','".$round."', '".$select_btn."', '-10')";
 	mysqli_query($con,$sql);
 	}
-    header("Location: user_menu.php");
+    header("Location: user_menu.php?id=".$team_id);
   
 
 }
@@ -56,25 +62,55 @@ if(isset($_POST['select_btn'])){
 <!DOCTYPE html>
 <html>
 <head>
-	<LINK href="w3.css" rel="stylesheet" type="text/css">
+
 	<title>
 		Hello Teams!!
 	</title>
+	<link rel="stylesheet" type="text/css" href="w3.css">
 </head>
-<body>
-<center>
-	<h2>
-	Display Question No.
-	<?php
-	//variable for interconnection
-	echo $id;
-	?>
-	</h2>
+    <style type="text/css">
+    body{
+        margin: 0 auto;
+ background-image: url("images/a3.jpg");
+ background-repeat: no-repeat;
+ background-size: 100% 1280px;
+ 
+}
+</style>
+  </head>
+  <body style="color: #fff;" >
+
+       <center>
+      <section id="banner">
+        <div class="inner">
+
+
+                  <div class="container"><hr>
+        <h2 class="site-title" style= "color:#fff;">
+           ROUND 1
+        </h2>
+        <hr>
+        <h3 class="section-name">
+          
+          <span id="question" method="GET">
+                     <font size="1">
+          
+          <h3 style= "color:#fff;">
+          Display Question No.
+          <?php
+          //variable for interconnection
+          echo $id;
+          ?>
+          
+        </h3>
+        <br><br>
 	<form method="POST">
-<button class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 80vw; height: 100px;vertical-align: 50" onclick="location.href = 'user_menu.php';" name="select_btn" value="a">A</button>
-<button class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 80vw; height: 100px;vertical-align: 50" onclick="location.href = 'user_menu.php';" name="select_btn" value="b">B</button>
-<button class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 80vw; height: 100px;vertical-align: 50" onclick="location.href = 'user_menu.php';" name="select_btn" value="c">C</button>
-<button class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 80vw; height: 100px;vertical-align: 50" onclick="location.href = 'user_menu.php';" name="select_btn" value="d">D</button>
+    <font size="4">
+<button id="options" class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 20vw; height: 100px;vertical-align: 50; border-radius: 20px;" onclick="location.href = 'user_menu.php';" name="select_btn" value="a" >A</button><br><br>
+<button id="options" class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 20vw; height: 100px;vertical-align: 50; border-radius: 20px" onclick="location.href = 'user_menu.php';" name="select_btn" value="b" >B</button><br><br>
+<button id="options" class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 20vw; height: 100px;vertical-align: 50;border-radius: 20px" onclick="location.href = 'user_menu.php';" name="select_btn" value="c" >C</button><br><br>
+<button id="options" class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 20vw; height: 100px;vertical-align: 50; border-radius: 20px" onclick="location.href = 'user_menu.php';" name="select_btn" value="d" >D</button>
+</font>
 </form>
 </center>
 </body>

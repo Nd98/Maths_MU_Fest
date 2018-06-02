@@ -1,0 +1,49 @@
+hr
+{
+	border:1.5px solid gray;
+}
+/* gallery */
+#gallery {
+ clear: both; }
+.gallery_box {
+ padding: 100px 0px 100px 0px;
+  margin: -50px 110px 90px 0px; 
+
+  }
+  em,h5{
+  	margin: 0px;
+    padding-right: 40px;
+   
+}
+
+.last_gallery_box 
+{
+ padding: 0; 
+ margin: 0;
+  border: none; 
+}
+.gallery_box a.gallery_img 
+{
+ display: block; 
+ float: left; 
+ width: 210px; 
+ height: 160px; 
+}
+.gallery_box .right {
+ margin-left: 370px;
+ margin-bottom: -200px;
+ width: 300px; 
+}
+
+
+.service_box { clear: both; margin-bottom: 50px; }
+.service_box img { float: left; width: 48px; height: 48px; }
+.service_box .sb_right { float: right; width: 480px; }
+
+#tooplate_sidebar_wrapper {
+	float: right;
+	width: 280px;
+	margin-right: 20px;
+	background: #171616;
+}
+

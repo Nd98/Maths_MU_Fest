@@ -1,42 +1,74 @@
 <?php
-	$host="localhost:3306";
-$user="root";
-$password="";
-$db="round_intermediate";
 
-
- 
-$con=mysqli_connect($host,$user,$password);
-
-// Check connection
-if (mysqli_connect_errno())
-  {
-
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-  
-
-mysqli_select_db($con,$db);
 if(isset($_POST['select-btn'])){
 	$select_btn=$_POST['select-btn'];
-	$sql="update variables SET id='1' WHERE round='".$select_btn."'";
-	mysqli_query($con,$sql);
 	header("location: ".$select_btn.".php");
 }
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<LINK href="w3.css" rel="stylesheet" type="text/css">
-	<title>Hello Admin</title>
+
+    <title>ROUND </title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+     <script src="assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+      <style type="text/css">
+    body{
+        margin: 0 auto;
+ background-image: url("bg1.jpg");
+ background-repeat: no-repeat;
+ background-size: 100% 720px;
+}
+</style>
+
 </head>
 <body>
-	<center><h2>Rounds</h2>
-<form method="POST">
-<button class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 80vw; height: 100px" onclick="location.href = 'Round_1.php';" name="select-btn" value="round_1">Round-1</button>
-<button class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 80vw; height: 100px" onclick="location.href = 'Round_2.php';" name="select-btn" value="round_2">Round-2</button>
-<button class="w3-btn w3-white w3-border w3-border-orange w3-hover-orange w3-ripple" style="width: 80vw; height: 100px" onclick="location.href = 'Round_3.php';" name="select-btn" value="round_2">Round-3</button>
-</form>
-</center>
-</body>
-</html>
+
+        <div class="container"><hr>
+            <div class="row">
+                <div class="col-lg-18 text-center">
+                    <h2 class="section-heading" style="color: #fff">ROUND EMC2</h2>
+                    <h3 class="section-subheading text-muted" style="color: #000">Our Amazing Team</h3>
+                </div>
+            </div><hr>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="team-member">
+                        <img src="img1.jpg" style="width: 500px; height: 140px"  align="right" onclick="location.href = 'Round_1.php';" name="select-btn" value="round_2"">
+                    </div>
+
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="col-sm-10">
+                    <br>
+            
+                    <div class="team-member">
+                        <img src="img2.jpg" style="width: 500px; height: 140px"  align="right" onclick="location.href = 'Round_2.php';" name="select-btn" value="round_2"">
+                       
+                    </div>
+
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-sm-10">
+                    <br>
+                    <div class="team-member">
+                        <img src="img3.jpg" align="right" style="width: 500px; height: 140px" onclick="location.href = 'scorecard_round_3.xlsx';" name="select-btn" value="round_2">
+                        
+                    </div>
+                </div>
+            </div>
+
+    </body>
+    </html>
